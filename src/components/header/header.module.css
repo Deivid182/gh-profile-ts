@@ -1,0 +1,15 @@
+.header {
+  background-image: linear-gradient(to right, rgb(0 0 0 / .2), rgb(0 0 0 / .3)), url(/hero-image-github-profile.png);
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 0 15rem 0;
+  z-index: 10;
+}
+
+.header__container {
+  max-width: 144rem;
+  margin: 0 auto;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+}

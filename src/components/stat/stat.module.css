@@ -1,0 +1,26 @@
+.stat {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  padding: 0.8rem 1.6rem;
+  gap: 1.5rem;
+  background-color: var(--very-dark-blue);
+  border-radius: 1rem;
+  font-size: 1.6rem;
+}
+
+@media screen and (min-width: 640px) {
+  .stat {
+    justify-content: center;
+  }
+}
+
+.stat__label {
+  color: var(--light-gray);
+  border-right: 1px solid var(--light-gray);
+  padding: 1rem;
+}
+
+.stat__value {
+  color: var(--very-light-gray);
+}

@@ -1,0 +1,52 @@
+:root {
+  --very-dark-blue: #111729;
+  --dark-blue: #1D1B48;
+  --light-blue: #6D6FF7;
+  --very-dark-gray: #20293A;
+  --dark-gray: #364153;
+  --light-gray: #4A5567;
+  --very-light-gray: #CDD5E0;
+  --very-light-gray-text: #97A3B7
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Be Vietnam Pro", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6, p {
+  margin: 0 !important;
+}
+
+img {
+  max-width: 100%;
+}
+
+[class$=__heading] {
+  font-size: 4rem;
+  text-align: center;
+  margin: 5rem 0;
+  color: var(--very-light-gray);
+  font-weight: 900;
+}
+
+.App {
+  background-color: var(--very-dark-gray);
+  min-height: 100vh;
+  position: relative;
+}

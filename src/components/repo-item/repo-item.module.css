@@ -1,0 +1,56 @@
+.repo {
+  padding: 2.4rem 1.8rem;
+  border-radius: 1rem;
+  background: linear-gradient(
+    to right,
+    var(--very-dark-blue),
+    var(--dark-blue)
+  );
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem
+}
+
+.repo__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem
+}
+
+.repo__info__title {
+  font-size: 2rem;
+  color: var(--very-light-gray);
+}
+
+.repo__info__description {
+  font-size: 1.6rem;
+  color: var(--very-light-gray-text);
+}
+
+.repo__stats {
+  display: flex;
+  align-items: center;
+  gap: 1rem
+}
+
+.repo__stats__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--very-light-gray-text);
+}
+
+.repo__stats__item__icon {
+  width: 2.4rem;
+  height: 2.4rem
+}
+
+.repo__stats__item__label {
+  font-size: 1.4rem;
+}
+
+.repo__stats__updated {
+  font-size: 1.2rem;
+  color: var(--very-light-gray-text);
+  padding-left: 1rem;
+}
