@@ -13,6 +13,7 @@ const RepoList = () => {
         <RepoItem />
         <RepoItem />
       </div>
+      <button className={styles['repo-list__btn']}>View all repositories</button>
     </div>
   )
 }
