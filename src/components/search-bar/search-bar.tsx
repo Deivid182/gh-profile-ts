@@ -1,18 +1,24 @@
 import { useState } from "react";
 import styles from "./search-bar.module.css";
-const SearchBar = () => {
-  const [value, setValue] = useState("");
+
+type Props = {
+  onSubmit?: (value: string) => void;
+}
+
+const SearchBar = ({ onSubmit }: Props) => {
+  const [query, setQuery] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
+    setQuery(event.target.value);
   };
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    onSubmit && onSubmit(query);
   };
 
   return (
-    <form onSubmit={onSubmit} className={styles.search}>
+    <form onSubmit={handleSubmit} className={styles.search}>
       <img
         src="/Search.svg"
         alt="search icon"
@@ -25,7 +31,7 @@ const SearchBar = () => {
         data-testid="search-bar"
         placeholder="username"
         className={styles.search__input}
-        value={value}
+        value={query}
         onChange={handleChange}
       />
     </form>
