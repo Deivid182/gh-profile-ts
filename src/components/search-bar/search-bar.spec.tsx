@@ -2,14 +2,11 @@ import user from "@testing-library/user-event"
 import SearchBar from "./search-bar";
 import { fireEvent, render, screen, waitFor} from "@testing-library/react";
 
-
 // steps for test this input
 // 1. render the component
 // 2. find the input
 // 3. change the value
-// 4. expect the value to be changed
-
-
+// 4. expect the value to be change
 
 describe("SearchBar", () => {
   it("should render", () => {
@@ -35,6 +32,5 @@ describe("SearchBar", () => {
     await user.keyboard("{Enter}");
     await waitFor(() => expect(onSubmit).toHaveBeenCalledTimes(1));
   })
-  
   
 })

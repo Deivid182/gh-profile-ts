@@ -12,9 +12,9 @@ const SearchBar = ({ onSubmit }: Props) => {
     setQuery(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit && onSubmit(query);
+    onSubmit && await onSubmit(query);
   };
 
   return (
