@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { getGithubUser } from "../../api";
-import type { UserGH } from "../../types";
+import { getGithubUser, getGithubUserRepos } from "../../api";
 import styles from "./header.module.css";
+import { useUserGH } from "../hooks/use-user-gh";
 const Header = () => {
   const [query, setQuery] = useState("");
-  const [user, setUser] = useState<UserGH | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const { state, dispatch, isUserInfoEmpty } = useUserGH();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
@@ -13,7 +14,7 @@ const Header = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setUser(null);
+    dispatch({ type: "clear-user-gh" });
     setError(null);
     if (!query) {
       setError("Please enter a username");
@@ -21,13 +22,13 @@ const Header = () => {
     }
 
     const userFound = await getGithubUser(query);
-    console.log(userFound)
+    // console.log(userFound)
     if(userFound.name != null) {
-      setUser(userFound);
+      const userRepos = await getGithubUserRepos(query)
+      dispatch({ type: "set-user-gh", payload: { user: { ...userFound, repos: userRepos} } });
     } else {
       setError("User not found");
     }
-
   };
 
   return (
@@ -54,7 +55,7 @@ const Header = () => {
             onChange={handleChange}
           />
         </form>
-        {user ? (
+        {!isUserInfoEmpty ? (
           <div className={styles.header__container__user}>
             <img
               src="/github-logo.jpg"
@@ -65,10 +66,10 @@ const Header = () => {
             />
             <div className={styles.header__container__user__info}>
               <p data-testid="username" className={styles.header__container__user__info__username}>
-                {user.name}
+                {state.user.name}
               </p>
               <p className={styles.header__container__user__info__bio}>
-                {user.bio}
+                {state.user.bio}
               </p>
             </div>
           </div>
