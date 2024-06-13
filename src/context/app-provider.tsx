@@ -1,9 +1,10 @@
-import { useReducer, createContext, useMemo } from "react";
+import { useReducer, createContext, useMemo, useEffect } from "react";
+import { Toaster, toast } from "sonner"
 import {
   userGHReducer,
   initialState,
   type UserGHActions,
-} from "../reducers/user-gh";
+} from "../reducers/app";
 
 type UserGHContextType = {
   state: typeof initialState;
@@ -18,11 +19,19 @@ export const UserGHContext = createContext<UserGHContextType>(
 export const UserGHProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(userGHReducer, initialState);
 
+  useEffect(() => {
+    if (state.toast.message !== "") {
+      state.toast.type === "success" ? toast.success(state.toast.message) : toast.error(state.toast.message)
+    }
+  }, [state.toast])
+
   const isUserInfoEmpty = useMemo(() => {
     return state.user.name === "";
   }, [state.user.name]);
+
   return (
     <UserGHContext.Provider value={{ state, dispatch, isUserInfoEmpty }}>
+      <Toaster toastOptions={{ duration: 3000 }} position="top-center" />
       {children}
     </UserGHContext.Provider>
   );

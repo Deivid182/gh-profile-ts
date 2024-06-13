@@ -5,8 +5,9 @@ export type UserGH = {
   followers: number
   following: number
   location: string
-  bio: string
-  repos: Repo[]
+  bio: string,
+  avatar_url: string
+  repos_url: string
 }
 
 export type Repo = {
