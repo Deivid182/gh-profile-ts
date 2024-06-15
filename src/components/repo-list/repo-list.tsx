@@ -12,10 +12,10 @@ const RepoList = () => {
           {state.user.bio}
         </p>
       </div>
-      <div className={styles["repo-list__grid"]}>
+      <ul className={styles["repo-list__grid"]}>
         {state.repos.length > 0 &&
           state.repos.map((repo) => <RepoItem key={repo.id} repo={repo} />)}
-      </div>
+      </ul>
       <button className={styles["repo-list__btn"]}>
         View all repositories
       </button>

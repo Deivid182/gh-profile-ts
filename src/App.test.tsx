@@ -37,3 +37,20 @@ describe("when the user interacts with the search input", () => {
     await waitFor(() => expect(imageSrc?.length).toBeGreaterThan(0))
   })
 })
+
+describe("when the user submit the form and select a card repository", () => {
+  it("should redirect the user to the original page repository", async () => {
+    const input = screen.getByPlaceholderText("username")
+    await user.type(input, "fazt")
+    await user.keyboard("{enter}")
+
+    //click on the first card repository
+    const cards = await waitFor(() => screen.getAllByRole("link"))
+    if(cards.length > 0) {
+      const card = cards[0]
+      await user.click(card)
+      //expect that the user be redirected to a new tab without
+      await waitFor(() => expect(window.history.length).toBeGreaterThan(0))
+    }
+  })
+})

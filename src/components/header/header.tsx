@@ -11,7 +11,6 @@ const Header = () => {
   const { mutate } = useMutation({
     mutationFn: getGithubUser,
     onSuccess: (data) => {
-      console.log(data);
       dispatch({ type: "set-user-gh", payload: { user: data, repos: data.repos } });
     },
     onError: (err) => {
